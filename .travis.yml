@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "4.9.1"
+before_script:
+  - "npm start &"
+  - sleep 3
+notifications:
+  email:
+    - "external-ci-notifications+braintree_express_example@getbraintree.com"

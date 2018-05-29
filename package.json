@@ -1,0 +1,35 @@
+{
+  "name": "braintree_express_example",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node ./bin/www",
+    "test": "npm run lint && mocha"
+  },
+  "devDependencies": {
+    "chai": "~3.4.1",
+    "eslint": "2.7.0",
+    "eslint-config-braintree": "^1.0.1",
+    "mocha": "~2.3.3",
+    "superagent": "~1.4.0",
+    "supertest": "~1.1.0"
+  },
+  "dependencies": {
+    "body-parser": "~1.14.1",
+    "braintree": "^2.9.0",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.4.0",
+    "debug": "~2.2.0",
+    "dotenv": "~1.2.0",
+    "express": "~4.13.1",
+    "express-handlebars": "^3.0.0",
+    "express-session": "~1.12.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  },
+  "engines": {
+    "node": ">=0.12.7"
+  }
+}

@@ -1,0 +1,71 @@
+
+{{#if result.message}}
+    <h1>{{result.header}}</h1>
+    {{result.message}}
+
+   
+{{else}}
+    <p>TRY AGAIN</p>
+{{/if}}
+
+<section>
+    <a href="/checkouts/new"><span>Test Another Transaction</span></a>
+</section>
+
+ <div id='transaction-table'>
+        <table>
+            <tbody>
+                <tr>
+                    <th>id</th>
+                    <td>{{transaction.id}}</td>
+                </tr>
+                <tr>
+                    <th>type</th>
+                    <td>{{transaction.type}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{transaction.status}}</td>
+                </tr>
+                <tr>
+                    <th>createdAt</th>
+                    <td>{{transaction.createAt}}</td>
+                </tr>
+                <tr>
+                    <th>updatedAt</th>
+                    <td>{{transaction.updatedAt}}</td>
+                </tr>
+                <tr>
+                    <th>type</th>
+                    <td>{{transaction.type}}</td>
+                </tr>
+                <tr>
+                    <th>token</th>
+                    <td>{{transaction.creditCard.token}}</td>
+                </tr>
+                <tr>
+                    <th>bin</th>
+                    <td>{{transaction.creditCard.bin}}</td>
+                </tr>
+                <tr>
+                    <th>last4</th>
+                    <td>{{transaction.creditCard.last4}}</td>
+                </tr>
+                <tr>
+                    <th>cardType</th>
+                    <td>{{transaction.creditCard.cardType}}</td>
+                </tr>
+                <tr>
+                    <th>expirationDate</th>
+                    <td>{{transaction.creditCard.expirationDate}}</td>
+                </tr>
+                    <th>customerID</th>
+                    <td>{{transaction.customer.id}}</td>
+                </tr>
+                <tr>
+                    <th>firstName</th>
+                    <td>{{transaction.customer.firstName}}</td>
+                </tr> 
+            </tbody>
+        </table>
+    </div>
