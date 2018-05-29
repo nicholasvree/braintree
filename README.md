@@ -1,7 +1,7 @@
 # Braintree Hosted Fields Node.js example
 This simple integration was created as apart of a coding challenge for an API specialist position at Braintree.  
 
-Thanks for checking it out!  Please email nickjvree@gmail.com with any questions or issues.
+Thanks for checking it out!  Please email with an issues/questions.  Thanks!
 
 ## Setup Instructions
 
