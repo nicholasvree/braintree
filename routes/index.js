@@ -51,7 +51,7 @@ router.get('/', function (req, res) {
   res.redirect('checkouts/new');
 });
 
-//New transaction form 
+//New transaction form.  Generates token then renders NEW view
 router.get('/checkouts/new', function (req, res) {
 
   gateway.clientToken.generate({}, function (err, response) {
@@ -75,7 +75,7 @@ router.post('/checkouts', function (req, res) {
   var amount = req.body.amount; 
   var nonce = req.body.payment_method_nonce;
 
-    //First we are going to create a customer to verify the credit card and save the payment method
+    //First we are going to create a customer, verify the credit card and save the payment method in the vault with the customer name/id
     gateway.customer.create({
       firstName:req.body.customer,
       paymentMethodNonce:nonce,
@@ -86,9 +86,9 @@ router.post('/checkouts', function (req, res) {
       }
     }, function(err,result){
       if(result.success){
-        //Next we are going to replace the paymentMethodNonce with the paymentMethodToken, since the original nonce has been spent
+        //Next we are going to replace the paymentMethodNonce with the paymentMethodToken, since the original nonce has been spent.  We're assuming the first payment method for the customer is the one they want to use.
         nonce = result.customer.paymentMethods[0].token
-      
+        //Next we are going to create a transaction
         gateway.transaction.sale({
           amount: amount,
           paymentMethodToken: nonce,
@@ -96,12 +96,11 @@ router.post('/checkouts', function (req, res) {
             submitForSettlement: true
           }
         }, function (err, result) {
-          //if the result is a success, redirect to the SHOW view
+          //if the transaction result is a success, redirect to the SHOW view
           if (result.success || result.transaction) {
-            console.log('success')
             res.redirect('checkouts/id/' + result.transaction.id);
           } else {
-            //if the result wasn't a success, redirect to the NEW view with the transaction error
+            //if the transaction result wasn't a success, redirect to the NEW view with the transaction error
             transactionErrors = result.errors.deepErrors();
             console.log('error', result.errors)
             req.flash('error', formatErrors(transactionErrors));

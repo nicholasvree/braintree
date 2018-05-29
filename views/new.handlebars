@@ -28,7 +28,7 @@
     </div>
 
     <div class=".button-container">
-            <input class="button button--green button--green:hover button--small"type="submit" value="Pay" />
+            <input class="button button--green button--green:hover button--small"type="submit" value="Pay" disabled/>
     </div>
 </form>
 
@@ -87,13 +87,13 @@
             event.preventDefault();
             document.getElementById("client-error-area").innerHTML = "";
 
-
+            //request the nonce
             hostedFieldsInstance.tokenize(function (tokenizeErr, payload) {
               if (tokenizeErr) {
                 document.getElementById("client-error-area").innerHTML = "ERRORS:" + tokenizeErr.message;
                 return;
               }
-
+              //place the nonce into the form
               document.querySelector('#nonce').value = payload.nonce;
               form.submit();
 
